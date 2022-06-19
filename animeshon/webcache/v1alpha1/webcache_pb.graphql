@@ -40,12 +40,12 @@ type AnimeshonWebcacheV1Alpha1_Cache {
   """
   The creation time indicating when this revision was created.
   """
-  revisionCreateTime: GoogleProtobuf_Timestamp
+  revisionCreateTime: DateTime
   """
   The expiration time indicating when this revision should no longer be
   considered valid.
   """
-  revisionExpireTime: GoogleProtobuf_Timestamp
+  revisionExpireTime: DateTime
 }
 
 """
@@ -88,12 +88,12 @@ input AnimeshonWebcacheV1Alpha1_CacheInput {
   """
   The creation time indicating when this revision was created.
   """
-  revisionCreateTime: GoogleProtobuf_TimestampInput
+  revisionCreateTime: DateTime
   """
   The expiration time indicating when this revision should no longer be
   considered valid.
   """
-  revisionExpireTime: GoogleProtobuf_TimestampInput
+  revisionExpireTime: DateTime
 }
 
 type AnimeshonWebcacheV1Alpha1_CreateCacheRequest {

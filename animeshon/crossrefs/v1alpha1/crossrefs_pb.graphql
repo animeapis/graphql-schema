@@ -224,11 +224,11 @@ type AnimeshonCrossrefsV1Alpha1_CrossRef {
   """
   creation time
   """
-  createTime: GoogleProtobuf_Timestamp
+  createTime: DateTime
   """
   update time
   """
-  updateTime: GoogleProtobuf_Timestamp
+  updateTime: DateTime
   """
   all edges of the crossreference
   """
@@ -259,11 +259,11 @@ input AnimeshonCrossrefsV1Alpha1_CrossRefInput {
   """
   creation time
   """
-  createTime: GoogleProtobuf_TimestampInput
+  createTime: DateTime
   """
   update time
   """
-  updateTime: GoogleProtobuf_TimestampInput
+  updateTime: DateTime
   """
   all edges of the crossreference
   """
@@ -307,11 +307,11 @@ type AnimeshonCrossrefsV1Alpha1_OperationMetadata {
   """
   Output only. The time the operation was created.
   """
-  createTime: GoogleProtobuf_Timestamp
+  createTime: DateTime
   """
   Output only. The time the operation finished running.
   """
-  endTime: GoogleProtobuf_Timestamp
+  endTime: DateTime
   """
   Output only. Server-defined resource path for the target of the operation.
   """
@@ -704,7 +704,7 @@ type AnimeshonCrossrefsV1Alpha1_Wormhole {
   """
   most significant date
   """
-  date: GoogleProtobuf_Timestamp
+  date: DateTime
   """
   parent's resource name
   useful for chapters and episodes to know which content it refers

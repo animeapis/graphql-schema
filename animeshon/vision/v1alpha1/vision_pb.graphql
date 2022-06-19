@@ -20,7 +20,7 @@ type AnimeshonVisionV1Alpha1_ImageAnalysis {
   """
   The creation time indicating when this revision was created.
   """
-  createTime: GoogleProtobuf_Timestamp
+  createTime: DateTime
 }
 
 type AnimeshonVisionV1Alpha1_ImageAnnotation {
@@ -39,11 +39,11 @@ type AnimeshonVisionV1Alpha1_ImageAnnotation {
   """
   The timestamp at which the annotation was created.
   """
-  createTime: GoogleProtobuf_Timestamp
+  createTime: DateTime
   """
   The latest timestamp at which the annotation was updated.
   """
-  updateTime: GoogleProtobuf_Timestamp
+  updateTime: DateTime
 }
 
 input AnimeshonVisionV1Alpha1_ImageAnnotationInput {
@@ -62,11 +62,11 @@ input AnimeshonVisionV1Alpha1_ImageAnnotationInput {
   """
   The timestamp at which the annotation was created.
   """
-  createTime: GoogleProtobuf_TimestampInput
+  createTime: DateTime
   """
   The latest timestamp at which the annotation was updated.
   """
-  updateTime: GoogleProtobuf_TimestampInput
+  updateTime: DateTime
 }
 
 type AnimeshonVisionV1Alpha1_AnalyzeImageRequest {

@@ -25,11 +25,11 @@ type AnimeshonVisionV1Alpha1_ImageAnnotationEntry {
   """
   When the album was created.
   """
-  createTime: GoogleProtobuf_Timestamp
+  createTime: DateTime
   """
   When the album was updated.
   """
-  updateTime: GoogleProtobuf_Timestamp
+  updateTime: DateTime
 }
 
 """
@@ -53,5 +53,5 @@ type AnimeshonVisionV1Alpha1_ImageAnalysisEntry {
   """
   The creation time indicating when this revision was created.
   """
-  createTime: GoogleProtobuf_Timestamp
+  createTime: DateTime
 }

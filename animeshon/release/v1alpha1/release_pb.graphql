@@ -58,19 +58,19 @@ type AnimeshonReleaseV1Alpha1_Release {
   """
   The timestamp at which the release was created.
   """
-  createTime: GoogleProtobuf_Timestamp
+  createTime: DateTime
   """
   The latest timestamp at which the release was updated.
   """
-  updateTime: GoogleProtobuf_Timestamp
+  updateTime: DateTime
   """
   The timestamp at which the release will expire.
   """
-  expireTime: GoogleProtobuf_Timestamp
+  expireTime: DateTime
   """
   The timestamp at which the release was deleted.
   """
-  deleteTime: GoogleProtobuf_Timestamp
+  deleteTime: DateTime
 }
 
 input AnimeshonReleaseV1Alpha1_ReleaseInput {
@@ -131,19 +131,19 @@ input AnimeshonReleaseV1Alpha1_ReleaseInput {
   """
   The timestamp at which the release was created.
   """
-  createTime: GoogleProtobuf_TimestampInput
+  createTime: DateTime
   """
   The latest timestamp at which the release was updated.
   """
-  updateTime: GoogleProtobuf_TimestampInput
+  updateTime: DateTime
   """
   The timestamp at which the release will expire.
   """
-  expireTime: GoogleProtobuf_TimestampInput
+  expireTime: DateTime
   """
   The timestamp at which the release was deleted.
   """
-  deleteTime: GoogleProtobuf_TimestampInput
+  deleteTime: DateTime
 }
 
 """

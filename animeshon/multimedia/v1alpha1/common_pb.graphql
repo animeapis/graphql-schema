@@ -7,11 +7,11 @@ type AnimeshonMultimediaV1Alpha1_OperationMetadata {
   """
   Output only. The time the operation was created.
   """
-  createTime: GoogleProtobuf_Timestamp
+  createTime: DateTime
   """
   Output only. The time the operation finished running.
   """
-  endTime: GoogleProtobuf_Timestamp
+  endTime: DateTime
   """
   Output only. Server-defined resource path for the target of the operation.
   """

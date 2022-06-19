@@ -82,15 +82,15 @@ type AnimeshonKnowledgeV1Alpha1_Contribution {
   """
   When the album was created.
   """
-  createTime: GoogleProtobuf_Timestamp
+  createTime: DateTime
   """
   When the album was updated.
   """
-  updateTime: GoogleProtobuf_Timestamp
+  updateTime: DateTime
   """
   When the album was reviewed.
   """
-  reviewTime: GoogleProtobuf_Timestamp
+  reviewTime: DateTime
 }
 
 """
@@ -122,15 +122,15 @@ input AnimeshonKnowledgeV1Alpha1_ContributionInput {
   """
   When the album was created.
   """
-  createTime: GoogleProtobuf_TimestampInput
+  createTime: DateTime
   """
   When the album was updated.
   """
-  updateTime: GoogleProtobuf_TimestampInput
+  updateTime: DateTime
   """
   When the album was reviewed.
   """
-  reviewTime: GoogleProtobuf_TimestampInput
+  reviewTime: DateTime
 }
 
 """
