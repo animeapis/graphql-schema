@@ -221,9 +221,9 @@ type ImportPageResponse_ResponseOneof_Error {
 
 type ImportPageResponse_ImportPageResult {
   """
-  The successfully imported page.
+  The page resource name.
   """
-  page: Page
+  name: String!
 }
 
 type ImportPageResponse_ImportPageRemoteError {
