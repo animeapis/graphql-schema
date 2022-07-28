@@ -6,8 +6,8 @@ type Archive_Query {
 }
 
 type Archive_Mutation {
-  importPage(input: ImportPageRequestInput!): ImportPageResponse
   createPage(input: CreatePageRequestInput!): Page
+  importPage(input: ImportPageRequestInput!): ImportPageResponse
   deletePage(input: DeletePageRequestInput!): GoogleProtobuf_Empty
 }
 
