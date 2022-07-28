@@ -14,10 +14,6 @@ type PageEntry {
   """
   parent: PageEntry_ParentOneof
   """
-  The uri of the page.
-  """
-  uri: String!
-  """
   The document body represented in bytes.
   """
   document: String!
