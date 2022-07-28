@@ -6,6 +6,7 @@ type Archive_Query {
 }
 
 type Archive_Mutation {
+  queryPage(input: QueryPageRequestInput!): QueryPageResponse
   createPage(input: CreatePageRequestInput!): Page
   importPage(input: ImportPageRequestInput!): ImportPageResponse
   deletePage(input: DeletePageRequestInput!): GoogleProtobuf_Empty
@@ -102,6 +103,35 @@ type ListPagesResponse {
   A token to retrieve next page of results.
   """
   nextPageToken: String!
+}
+
+type QueryPageRequest {
+  """
+  The name of the page to query.
+  """
+  name: String!
+  """
+  The query to perform on the document in declarative query language.
+  """
+  query: String!
+}
+
+input QueryPageRequestInput {
+  """
+  The name of the page to query.
+  """
+  name: String
+  """
+  The query to perform on the document in declarative query language.
+  """
+  query: String
+}
+
+type QueryPageResponse {
+  """
+  The document query result.
+  """
+  result: String!
 }
 
 type ImportPageRequest {
