@@ -3,10 +3,10 @@
 type Archive_Query {
   getPage(input: GetPageRequestInput!): Page
   listPages(input: ListPagesRequestInput!): ListPagesResponse
+  queryPage(input: QueryPageRequestInput!): QueryPageResponse
 }
 
 type Archive_Mutation {
-  queryPage(input: QueryPageRequestInput!): QueryPageResponse
   createPage(input: CreatePageRequestInput!): Page
   importPage(input: ImportPageRequestInput!): ImportPageResponse
   deletePage(input: DeletePageRequestInput!): GoogleProtobuf_Empty
