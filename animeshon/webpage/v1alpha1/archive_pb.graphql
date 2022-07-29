@@ -34,6 +34,85 @@ input PageInput {
   content: String
 }
 
+type QueryRequest {
+  """
+  The query to perform on the matching documents in FQL.
+  """
+  query: String!
+  """
+  The batch list of page resource names to be used for evaluation.
+  """
+  pages: [String!]!
+}
+
+input QueryRequestInput {
+  """
+  The query to perform on the matching documents in FQL.
+  """
+  query: String
+  """
+  The batch list of page resource names to be used for evaluation.
+  """
+  pages: [String!]
+}
+
+type QueryResponse {
+  """
+  The evaluated page resource name.
+  """
+  name: String!
+  """
+  The response is either the query result or an error with details.
+  """
+  response: QueryResponse_ResponseOneof
+}
+
+"""
+`QueryResponse_ResponseOneof` represents the `response` oneof in `animeshon.webpage.v1alpha1.QueryResponse`.
+"""
+union QueryResponse_ResponseOneof = QueryResponse_ResponseOneof_Result | QueryResponse_ResponseOneof_Error
+
+"""
+`QueryResponse_ResponseOneof_Result` represents the `result` oneof field in `animeshon.webpage.v1alpha1.QueryResponse`.
+"""
+type QueryResponse_ResponseOneof_Result {
+  _typename: String
+  """
+  If the operation was successful this field will return the query result.
+  """
+  result: QueryResponse_QueryPageResult
+}
+
+"""
+`QueryResponse_ResponseOneof_Error` represents the `error` oneof field in `animeshon.webpage.v1alpha1.QueryResponse`.
+"""
+type QueryResponse_ResponseOneof_Error {
+  _typename: String
+  """
+  If the operation ended up in a failure due to an error with the query
+  evaluation this field will provide more details about the failure.
+  """
+  error: QueryResponse_QueryPageError
+}
+
+type QueryResponse_QueryPageResult {
+  """
+  The result of the query evaluation.
+  """
+  body: GoogleProtobuf_Any
+}
+
+type QueryResponse_QueryPageError {
+  """
+  The gRPC error code returned by the query.
+  """
+  code: Float!
+  """
+  Additional details of the evaluation error.
+  """
+  details: String!
+}
+
 type GetPageRequest {
   """
   The name of the page to retrieve.
@@ -129,9 +208,55 @@ input QueryPageRequestInput {
 
 type QueryPageResponse {
   """
-  The document query result.
+  The response is either the query result or an error with details.
   """
-  result: String!
+  response: QueryPageResponse_ResponseOneof
+}
+
+"""
+`QueryPageResponse_ResponseOneof` represents the `response` oneof in `animeshon.webpage.v1alpha1.QueryPageResponse`.
+"""
+union QueryPageResponse_ResponseOneof = QueryPageResponse_ResponseOneof_Result | QueryPageResponse_ResponseOneof_Error
+
+"""
+`QueryPageResponse_ResponseOneof_Result` represents the `result` oneof field in `animeshon.webpage.v1alpha1.QueryPageResponse`.
+"""
+type QueryPageResponse_ResponseOneof_Result {
+  _typename: String
+  """
+  If the operation was successful this field will return the query result.
+  """
+  result: QueryPageResponse_QueryPageResult
+}
+
+"""
+`QueryPageResponse_ResponseOneof_Error` represents the `error` oneof field in `animeshon.webpage.v1alpha1.QueryPageResponse`.
+"""
+type QueryPageResponse_ResponseOneof_Error {
+  _typename: String
+  """
+  If the operation ended up in a failure due to an error with the query
+  evaluation this field will provide more details about the failure.
+  """
+  error: QueryPageResponse_QueryPageError
+}
+
+type QueryPageResponse_QueryPageResult {
+  """
+  The result of the query evaluation.
+  """
+  body: GoogleProtobuf_Any
+}
+
+type QueryPageResponse_QueryPageError {
+  """
+  The gRPC error code returned by the query.
+  """
+  code: Float!
+  """
+  Additional details of the evaluation error.
+  """
+  details: String!
 }
 
 type ImportPageRequest {
