@@ -99,7 +99,7 @@ type QueryResponse_QueryPageResult {
   """
   The result of the query evaluation.
   """
-  body: GoogleProtobuf_Any
+  value: GoogleProtobuf_Value
 }
 
 type QueryResponse_QueryPageError {
@@ -245,7 +245,7 @@ type QueryPageResponse_QueryPageResult {
   """
   The result of the query evaluation.
   """
-  body: GoogleProtobuf_Any
+  value: GoogleProtobuf_Value
 }
 
 type QueryPageResponse_QueryPageError {
