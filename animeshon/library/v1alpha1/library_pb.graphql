@@ -30,13 +30,6 @@ input AnimeshonLibraryV1Alpha1_PlaylistInput {
   type: AnimeshonLibraryV1Alpha1_Type
 }
 
-type AnimeshonLibraryV1Alpha1_BatchCreatePlaylistItemsResponse {
-  """
-  The list of items added to the playlist
-  """
-  items: [AnimeshonLibraryV1Alpha1_PlaylistItem!]!
-}
-
 type AnimeshonLibraryV1Alpha1_PlaylistItem {
   """
   The id of the playlist.
@@ -288,7 +281,7 @@ type AnimeshonLibraryV1Alpha1_BatchCreatePlaylistItemsRequest {
   """
   The playlist items to create.
   """
-  item: [AnimeshonLibraryV1Alpha1_PlaylistItem!]!
+  items: [AnimeshonLibraryV1Alpha1_PlaylistItem!]!
 }
 
 input AnimeshonLibraryV1Alpha1_BatchCreatePlaylistItemsRequestInput {
@@ -299,7 +292,14 @@ input AnimeshonLibraryV1Alpha1_BatchCreatePlaylistItemsRequestInput {
   """
   The playlist items to create.
   """
-  item: [AnimeshonLibraryV1Alpha1_PlaylistItemInput!]
+  items: [AnimeshonLibraryV1Alpha1_PlaylistItemInput!]
+}
+
+type AnimeshonLibraryV1Alpha1_BatchCreatePlaylistItemsResponse {
+  """
+  The list of items added to the playlist
+  """
+  items: [AnimeshonLibraryV1Alpha1_PlaylistItem!]!
 }
 
 type AnimeshonLibraryV1Alpha1_DeletePlaylistItemRequest {
