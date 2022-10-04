@@ -7,21 +7,21 @@ type TrackerService_Query {
   To fetch a tracker by the resource, use `ListTrackers` instead with an
   appropriate filter. Example: `filter = "resource:animes/1245678"`.
   """
-  getTracker(input: GetTrackerRequestInput!): Tracker
+  getTracker(input: GetTrackerRequestInput!): Tracker!
   """
   TODO: add documentation about supported filters.
   """
-  listTrackers(input: ListTrackersRequestInput!): ListTrackersResponse
+  listTrackers(input: ListTrackersRequestInput!): ListTrackersResponse!
 }
 
 type TrackerService_Mutation {
-  createTracker(input: CreateTrackerRequestInput!): Tracker
-  updateTracker(input: UpdateTrackerRequestInput!): Tracker
-  deleteTracker(input: DeleteTrackerRequestInput!): GoogleProtobuf_Empty
-  importTracker(input: ImportTrackersRequestInput!): GoogleLongrunning_Operation
-  exportTracker(input: ExportTrackersRequestInput!): GoogleLongrunning_Operation
-  createActivity(input: CreateActivityRequestInput!): Activity
-  deleteActivity(input: DeleteActivityRequestInput!): GoogleProtobuf_Empty
+  createTracker(input: CreateTrackerRequestInput!): Tracker!
+  updateTracker(input: UpdateTrackerRequestInput!): Tracker!
+  deleteTracker(input: DeleteTrackerRequestInput!): Boolean!
+  importTracker(input: ImportTrackersRequestInput!): Operation!
+  exportTracker(input: ExportTrackersRequestInput!): Operation!
+  createActivity(input: CreateActivityRequestInput!): Activity!
+  deleteActivity(input: DeleteActivityRequestInput!): Boolean!
 }
 
 """
@@ -121,7 +121,7 @@ input ActivityInput {
   """
   The id of the activity.
   """
-  name: String
+  name: String!
   """
   The content whose progress is being tracked.
   """
@@ -259,7 +259,7 @@ input TrackerInput {
   """
   The id of the tracker.
   """
-  name: String
+  name: String!
   """
   The content whose progress is being tracked.
   """
@@ -303,21 +303,14 @@ type Audience {
   members: [String!]!
 }
 
-type GetTrackerRequest {
+input GetTrackerRequestInput {
   """
   The name of the tracker to retrieve.
   """
   name: String!
 }
 
-input GetTrackerRequestInput {
-  """
-  The name of the tracker to retrieve.
-  """
-  name: String
-}
-
-type ListTrackersRequest {
+input ListTrackersRequestInput {
   """
   The user this tracker belongs to.
   """
@@ -325,26 +318,7 @@ type ListTrackersRequest {
   """
   If unspecified, server will pick an appropriate default.
   """
-  pageSize: Float!
-  """
-  The value returned from the previous call.
-  """
-  pageToken: String!
-  """
-  A filter to be applied to results.
-  """
-  filter: String!
-}
-
-input ListTrackersRequestInput {
-  """
-  The user this tracker belongs to.
-  """
-  parent: String
-  """
-  If unspecified, server will pick an appropriate default.
-  """
-  pageSize: Float
+  pageSize: Int
   """
   The value returned from the previous call.
   """
@@ -366,7 +340,7 @@ type ListTrackersResponse {
   nextPageToken: String!
 }
 
-type CreateTrackerRequest {
+input CreateTrackerRequestInput {
   """
   The parent this tracker belongs to.
   """
@@ -374,123 +348,59 @@ type CreateTrackerRequest {
   """
   The tracker to create.
   """
-  tracker: Tracker
-}
-
-input CreateTrackerRequestInput {
-  """
-  The parent this tracker belongs to.
-  """
-  parent: String
-  """
-  The tracker to create.
-  """
-  tracker: TrackerInput
-}
-
-type UpdateTrackerRequest {
-  """
-  The tracker to update.
-  """
-  tracker: Tracker
-  """
-  The field mask to determine which fields are to be updated. If empty, the
-  server will assume all fields are to be updated.
-  """
-  updateMask: GoogleProtobuf_FieldMask
+  tracker: TrackerInput!
 }
 
 input UpdateTrackerRequestInput {
   """
   The tracker to update.
   """
-  tracker: TrackerInput
+  tracker: TrackerInput!
   """
   The field mask to determine which fields are to be updated. If empty, the
   server will assume all fields are to be updated.
   """
-  updateMask: GoogleProtobuf_FieldMaskInput
-}
-
-type DeleteTrackerRequest {
-  """
-  The name of the tracker to delete.
-  """
-  name: String!
+  updateMask: FieldMaskInput
 }
 
 input DeleteTrackerRequestInput {
   """
   The name of the tracker to delete.
   """
-  name: String
-}
-
-type CreateActivityRequest {
-  """
-  The parent this tracker belongs to.
-  """
-  parent: String!
-  """
-  The activity to create.
-  """
-  activity: Activity
+  name: String!
 }
 
 input CreateActivityRequestInput {
   """
   The parent this tracker belongs to.
   """
-  parent: String
+  parent: String!
   """
   The activity to create.
   """
-  activity: ActivityInput
-}
-
-type DeleteActivityRequest {
-  """
-  The name of the activity to delete.
-  """
-  name: String!
+  activity: ActivityInput!
 }
 
 input DeleteActivityRequestInput {
   """
   The name of the activity to delete.
   """
-  name: String
-}
-
-"""
-Selecting what provider we want to import from
-"""
-type ImportTrackersRequest {
-  parent: String!
-  provider: Provider!
+  name: String!
 }
 
 """
 Selecting what provider we want to import from
 """
 input ImportTrackersRequestInput {
-  parent: String
+  parent: String!
   provider: Provider
 }
 
 """
 Selecting what provider we want to export to
 """
-type ExportTrackersRequest {
-  parent: String!
-  provider: Provider!
-}
-
-"""
-Selecting what provider we want to export to
-"""
 input ExportTrackersRequestInput {
-  parent: String
+  parent: String!
   provider: Provider
 }
 
@@ -532,7 +442,7 @@ type OperationMetadata {
   """
   Output only.
   """
-  progressPercentage: Float!
+  progressPercentage: Int!
 }
 
 """

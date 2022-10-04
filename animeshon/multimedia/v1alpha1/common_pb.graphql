@@ -3,7 +3,7 @@
 """
 Represents the metadata of the long-running operation.
 """
-type AnimeshonMultimediaV1Alpha1_OperationMetadata {
+type OperationMetadata {
   """
   Output only. The time the operation was created.
   """
@@ -38,10 +38,10 @@ type AnimeshonMultimediaV1Alpha1_OperationMetadata {
   """
   Output only.
   """
-  progressPercentage: Float!
+  progressPercentage: Int!
 }
 
-enum AnimeshonMultimediaV1Alpha1_PublishingType {
+enum PublishingType {
   """
   The default value. This value is used if the state is omitted.
   """
@@ -50,7 +50,7 @@ enum AnimeshonMultimediaV1Alpha1_PublishingType {
   CORPORATE
 }
 
-enum AnimeshonMultimediaV1Alpha1_State {
+enum State {
   """
   The default value. This value is used if the state is omitted.
   """

@@ -3,7 +3,7 @@
 """
 Information about the member, resource, and permission to check.
 """
-type AnimeshonGrbacV1Alpha1_AccessTuple {
+type AccessTuple {
   """
   The member, or principal, whose access you want to check.
   """
@@ -21,22 +21,22 @@ type AnimeshonGrbacV1Alpha1_AccessTuple {
 """
 Information about the member, resource, and permission to check.
 """
-input AnimeshonGrbacV1Alpha1_AccessTupleInput {
+input AccessTupleInput {
   """
   The member, or principal, whose access you want to check.
   """
-  principal: String
+  principal: String!
   """
   The full resource name that identifies the resource.
   """
-  fullResourceName: String
+  fullResourceName: String!
   """
   The IAM permission to check for the specified member and resource.
   """
-  permission: String
+  permission: String!
 }
 
-type AnimeshonGrbacV1Alpha1_Resource {
+type Resource {
   """
   The full resource name that identifies the resource.
   """
@@ -51,36 +51,36 @@ type AnimeshonGrbacV1Alpha1_Resource {
   etag: String!
 }
 
-input AnimeshonGrbacV1Alpha1_ResourceInput {
+input ResourceInput {
   """
   The full resource name that identifies the resource.
   """
-  name: String
+  name: String!
   """
   The full resource name that identifies the parent resource.
   """
-  parent: String
+  parent: String!
   """
   An etag for concurrency control, ignored during creation.
   """
   etag: String
 }
 
-type AnimeshonGrbacV1Alpha1_Subject {
+type Subject {
   """
   The resource name of the subject.
   """
   name: String!
 }
 
-input AnimeshonGrbacV1Alpha1_SubjectInput {
+input SubjectInput {
   """
   The resource name of the subject.
   """
-  name: String
+  name: String!
 }
 
-type AnimeshonGrbacV1Alpha1_Group {
+type Group {
   """
   The resource name of the group.
   """
@@ -95,11 +95,11 @@ type AnimeshonGrbacV1Alpha1_Group {
   etag: String!
 }
 
-input AnimeshonGrbacV1Alpha1_GroupInput {
+input GroupInput {
   """
   The resource name of the group.
   """
-  name: String
+  name: String!
   """
   The list of members of the group. Groups might include other groups.
   """
@@ -110,21 +110,21 @@ input AnimeshonGrbacV1Alpha1_GroupInput {
   etag: String
 }
 
-type AnimeshonGrbacV1Alpha1_Permission {
+type Permission {
   """
   The resource name of the permission.
   """
   name: String!
 }
 
-input AnimeshonGrbacV1Alpha1_PermissionInput {
+input PermissionInput {
   """
   The resource name of the permission.
   """
-  name: String
+  name: String!
 }
 
-type AnimeshonGrbacV1Alpha1_Role {
+type Role {
   """
   The resource name of the role.
   """
@@ -139,11 +139,11 @@ type AnimeshonGrbacV1Alpha1_Role {
   etag: String!
 }
 
-input AnimeshonGrbacV1Alpha1_RoleInput {
+input RoleInput {
   """
   The resource name of the role.
   """
-  name: String
+  name: String!
   """
   The list of permissions granted by the role.
   """
@@ -154,51 +154,29 @@ input AnimeshonGrbacV1Alpha1_RoleInput {
   etag: String
 }
 
-type AnimeshonGrbacV1Alpha1_TestIamPolicyRequest {
+input TestIamPolicyRequestInput {
   """
   The information to use for checking whether a member has a permission for a
   resource.
   """
-  accessTuple: AnimeshonGrbacV1Alpha1_AccessTuple
+  accessTuple: AccessTupleInput!
 }
 
-input AnimeshonGrbacV1Alpha1_TestIamPolicyRequestInput {
-  """
-  The information to use for checking whether a member has a permission for a
-  resource.
-  """
-  accessTuple: AnimeshonGrbacV1Alpha1_AccessTupleInput
-}
-
-type AnimeshonGrbacV1Alpha1_GetResourceRequest {
+input GetResourceRequestInput {
   """
   The full resource name of the resource to retrieve.
   """
   name: String!
 }
 
-input AnimeshonGrbacV1Alpha1_GetResourceRequestInput {
-  """
-  The full resource name of the resource to retrieve.
-  """
-  name: String
-}
-
-type AnimeshonGrbacV1Alpha1_CreateResourceRequest {
+input CreateResourceRequestInput {
   """
   The resource to create.
   """
-  resource: AnimeshonGrbacV1Alpha1_Resource
+  resource: ResourceInput!
 }
 
-input AnimeshonGrbacV1Alpha1_CreateResourceRequestInput {
-  """
-  The resource to create.
-  """
-  resource: AnimeshonGrbacV1Alpha1_ResourceInput
-}
-
-type AnimeshonGrbacV1Alpha1_TransferResourceRequest {
+input TransferResourceRequestInput {
   """
   The full resource name that identifies the resource.
   """
@@ -233,158 +211,65 @@ type AnimeshonGrbacV1Alpha1_TransferResourceRequest {
 
   It is possible to apply multiple substitutions simultaneously.
   """
-  substitutions: [AnimeshonGrbacV1Alpha1_TransferResourceRequest_SubstitutionsEntry!]!
-}
-
-input AnimeshonGrbacV1Alpha1_TransferResourceRequestInput {
-  """
-  The full resource name that identifies the resource.
-  """
-  name: String
-  """
-  The full resource name that identifies the new parent resource.
-  """
-  targetParent: String
-  """
-  The map of substitutions to apply to the full resource name and all of its
-  children.
-
-  As an example, it might be required to change the parent of a resource from
-  "users/123" to "users/678", the substitutions would then look like this:
-
-  substitutions = {"users/123": "users/456789"}
-
-  and the expected result would then be the following:
-
-  from : //abc.animeapis.com/users/123/resources/210
-  to   : //abc.animeapis.com/users/456789/resources/210
-
-  The same applies if we need to transfer a resource between two parents of
-  different type:
-
-  substitutions = {"users/123": "organizations/678/teams/987"}
-
-  and the expected result would then be the following:
-
-  from : //abc.animeapis.com/users/123/resources/210
-  to   : //abc.animeapis.com/organizations/678/teams/987/resources/210
-
-  It is possible to apply multiple substitutions simultaneously.
-  """
-  substitutions: [AnimeshonGrbacV1Alpha1_TransferResourceRequest_SubstitutionsEntryInput!]
+  substitutions: [TransferResourceRequest_SubstitutionsEntryInput!]
 }
 
 """
-`AnimeshonGrbacV1Alpha1_TransferResourceRequest_SubstitutionsEntry` represents the `substitutions` map in `animeshon.grbac.v1alpha1.TransferResourceRequest`.
+`TransferResourceRequest_SubstitutionsEntryInput` represents the `substitutions` map in `animeshon.grbac.v1alpha1.TransferResourceRequest`.
 """
-type AnimeshonGrbacV1Alpha1_TransferResourceRequest_SubstitutionsEntry {
-  key: String!
-  value: String!
-}
-
-"""
-`AnimeshonGrbacV1Alpha1_TransferResourceRequest_SubstitutionsEntryInput` represents the `substitutions` map in `animeshon.grbac.v1alpha1.TransferResourceRequest`.
-"""
-input AnimeshonGrbacV1Alpha1_TransferResourceRequest_SubstitutionsEntryInput {
+input TransferResourceRequest_SubstitutionsEntryInput {
   key: String
   value: String
 }
 
-type AnimeshonGrbacV1Alpha1_DeleteResourceRequest {
+input DeleteResourceRequestInput {
   """
   The full resource name that identifies the resource.
   """
   name: String!
 }
 
-input AnimeshonGrbacV1Alpha1_DeleteResourceRequestInput {
-  """
-  The full resource name that identifies the resource.
-  """
-  name: String
-}
-
-type AnimeshonGrbacV1Alpha1_CreateSubjectRequest {
+input CreateSubjectRequestInput {
   """
   The subject to create.
   """
-  subject: AnimeshonGrbacV1Alpha1_Subject
+  subject: SubjectInput!
 }
 
-input AnimeshonGrbacV1Alpha1_CreateSubjectRequestInput {
-  """
-  The subject to create.
-  """
-  subject: AnimeshonGrbacV1Alpha1_SubjectInput
-}
-
-type AnimeshonGrbacV1Alpha1_DeleteSubjectRequest {
+input DeleteSubjectRequestInput {
   """
   The subject to delete.
   """
   name: String!
 }
 
-input AnimeshonGrbacV1Alpha1_DeleteSubjectRequestInput {
-  """
-  The subject to delete.
-  """
-  name: String
-}
-
-type AnimeshonGrbacV1Alpha1_GetGroupRequest {
+input GetGroupRequestInput {
   """
   The name of the group to retrieve.
   """
   name: String!
 }
 
-input AnimeshonGrbacV1Alpha1_GetGroupRequestInput {
-  """
-  The name of the group to retrieve.
-  """
-  name: String
-}
-
-type AnimeshonGrbacV1Alpha1_CreateGroupRequest {
+input CreateGroupRequestInput {
   """
   The group to create.
   """
-  group: AnimeshonGrbacV1Alpha1_Group
+  group: GroupInput!
 }
 
-input AnimeshonGrbacV1Alpha1_CreateGroupRequestInput {
-  """
-  The group to create.
-  """
-  group: AnimeshonGrbacV1Alpha1_GroupInput
-}
-
-type AnimeshonGrbacV1Alpha1_UpdateGroupRequest {
+input UpdateGroupRequestInput {
   """
   The group to update.
   """
-  group: AnimeshonGrbacV1Alpha1_Group
+  group: GroupInput!
   """
   The field mask to determine which fields are to be updated. If empty, the
   server will assume all fields are to be updated.
   """
-  updateMask: GoogleProtobuf_FieldMask
+  updateMask: FieldMaskInput
 }
 
-input AnimeshonGrbacV1Alpha1_UpdateGroupRequestInput {
-  """
-  The group to update.
-  """
-  group: AnimeshonGrbacV1Alpha1_GroupInput
-  """
-  The field mask to determine which fields are to be updated. If empty, the
-  server will assume all fields are to be updated.
-  """
-  updateMask: GoogleProtobuf_FieldMaskInput
-}
-
-type AnimeshonGrbacV1Alpha1_AddGroupMemberRequest {
+input AddGroupMemberRequestInput {
   """
   The name of the group to add a member to.
   """
@@ -395,18 +280,7 @@ type AnimeshonGrbacV1Alpha1_AddGroupMemberRequest {
   member: String!
 }
 
-input AnimeshonGrbacV1Alpha1_AddGroupMemberRequestInput {
-  """
-  The name of the group to add a member to.
-  """
-  group: String
-  """
-  The member to be added.
-  """
-  member: String
-}
-
-type AnimeshonGrbacV1Alpha1_RemoveGroupMemberRequest {
+input RemoveGroupMemberRequestInput {
   """
   The name of the group to remove an member from.
   """
@@ -417,121 +291,56 @@ type AnimeshonGrbacV1Alpha1_RemoveGroupMemberRequest {
   member: String!
 }
 
-input AnimeshonGrbacV1Alpha1_RemoveGroupMemberRequestInput {
-  """
-  The name of the group to remove an member from.
-  """
-  group: String
-  """
-  The member to be removed.
-  """
-  member: String
-}
-
-type AnimeshonGrbacV1Alpha1_DeleteGroupRequest {
+input DeleteGroupRequestInput {
   """
   The resource name of the group to delete.
   """
   name: String!
 }
 
-input AnimeshonGrbacV1Alpha1_DeleteGroupRequestInput {
-  """
-  The resource name of the group to delete.
-  """
-  name: String
-}
-
-type AnimeshonGrbacV1Alpha1_CreatePermissionRequest {
+input CreatePermissionRequestInput {
   """
   The permission to create.
   """
-  permission: AnimeshonGrbacV1Alpha1_Permission
+  permission: PermissionInput!
 }
 
-input AnimeshonGrbacV1Alpha1_CreatePermissionRequestInput {
-  """
-  The permission to create.
-  """
-  permission: AnimeshonGrbacV1Alpha1_PermissionInput
-}
-
-type AnimeshonGrbacV1Alpha1_DeletePermissionRequest {
+input DeletePermissionRequestInput {
   """
   The resource name of the permission to delete.
   """
   name: String!
 }
 
-input AnimeshonGrbacV1Alpha1_DeletePermissionRequestInput {
-  """
-  The resource name of the permission to delete.
-  """
-  name: String
-}
-
-type AnimeshonGrbacV1Alpha1_GetRoleRequest {
+input GetRoleRequestInput {
   """
   The name of the role to retrieve.
   """
   name: String!
 }
 
-input AnimeshonGrbacV1Alpha1_GetRoleRequestInput {
-  """
-  The name of the role to retrieve.
-  """
-  name: String
-}
-
-type AnimeshonGrbacV1Alpha1_CreateRoleRequest {
+input CreateRoleRequestInput {
   """
   The role to create.
   """
-  role: AnimeshonGrbacV1Alpha1_Role
+  role: RoleInput!
 }
 
-input AnimeshonGrbacV1Alpha1_CreateRoleRequestInput {
-  """
-  The role to create.
-  """
-  role: AnimeshonGrbacV1Alpha1_RoleInput
-}
-
-type AnimeshonGrbacV1Alpha1_UpdateRoleRequest {
+input UpdateRoleRequestInput {
   """
   The role to update.
   """
-  role: AnimeshonGrbacV1Alpha1_Role
+  role: RoleInput!
   """
   The field mask to determine which fields are to be updated. If empty, the
   server will assume all fields are to be updated.
   """
-  updateMask: GoogleProtobuf_FieldMask
+  updateMask: FieldMaskInput
 }
 
-input AnimeshonGrbacV1Alpha1_UpdateRoleRequestInput {
-  """
-  The role to update.
-  """
-  role: AnimeshonGrbacV1Alpha1_RoleInput
-  """
-  The field mask to determine which fields are to be updated. If empty, the
-  server will assume all fields are to be updated.
-  """
-  updateMask: GoogleProtobuf_FieldMaskInput
-}
-
-type AnimeshonGrbacV1Alpha1_DeleteRoleRequest {
+input DeleteRoleRequestInput {
   """
   The resource name of the role to delete.
   """
   name: String!
-}
-
-input AnimeshonGrbacV1Alpha1_DeleteRoleRequestInput {
-  """
-  The resource name of the role to delete.
-  """
-  name: String
 }

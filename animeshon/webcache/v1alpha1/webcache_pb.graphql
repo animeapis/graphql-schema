@@ -3,7 +3,7 @@
 """
 Cache contains meta information about a specific web resource.
 """
-type AnimeshonWebcacheV1Alpha1_Cache {
+type Cache {
   """
   The name of the cache, idempotently generated from the scheme and uri.
   """
@@ -23,7 +23,7 @@ type AnimeshonWebcacheV1Alpha1_Cache {
   """
   The response code indicating the status of the remote response.
   """
-  statusCode: Float!
+  statusCode: Int!
   """
   The absolute redirect uri indicating any permanent or temporary redirect.
   """
@@ -51,19 +51,19 @@ type AnimeshonWebcacheV1Alpha1_Cache {
 """
 Cache contains meta information about a specific web resource.
 """
-input AnimeshonWebcacheV1Alpha1_CacheInput {
+input CacheInput {
   """
   The name of the cache, idempotently generated from the scheme and uri.
   """
-  name: String
+  name: String!
   """
   The original scheme indicating the protocol used for the original request.
   """
-  scheme: String
+  scheme: String!
   """
   The request uri stripped of the original scheme.
   """
-  uri: String
+  uri: String!
   """
   The response content type indicating the original media type.
   """
@@ -71,7 +71,7 @@ input AnimeshonWebcacheV1Alpha1_CacheInput {
   """
   The response code indicating the status of the remote response.
   """
-  statusCode: Float
+  statusCode: Int
   """
   The absolute redirect uri indicating any permanent or temporary redirect.
   """
@@ -80,74 +80,25 @@ input AnimeshonWebcacheV1Alpha1_CacheInput {
   The full resource name of the cached resource.
   """
   resource: String
-  """
-  The randomly generated revision identifier of this cache.
-  The format is an 8-character hexadecimal string.
-  """
-  revisionId: String
-  """
-  The creation time indicating when this revision was created.
-  """
-  revisionCreateTime: DateTime
-  """
-  The expiration time indicating when this revision should no longer be
-  considered valid.
-  """
-  revisionExpireTime: DateTime
 }
 
-type AnimeshonWebcacheV1Alpha1_CreateCacheRequest {
+input CreateCacheRequestInput {
   """
   The cache to be created.
   """
-  cache: AnimeshonWebcacheV1Alpha1_Cache
+  cache: CacheInput!
   """
   The time-to-live indicating how long this cache should be considered valid.
   If set to zero, the cache will not have an expiration time.
   """
-  ttl: GoogleProtobuf_Duration
+  ttl: DurationInput
 }
 
-input AnimeshonWebcacheV1Alpha1_CreateCacheRequestInput {
-  """
-  The cache to be created.
-  """
-  cache: AnimeshonWebcacheV1Alpha1_CacheInput
-  """
-  The time-to-live indicating how long this cache should be considered valid.
-  If set to zero, the cache will not have an expiration time.
-  """
-  ttl: GoogleProtobuf_DurationInput
-}
-
-type AnimeshonWebcacheV1Alpha1_ListCachesRequest {
+input ListCachesRequestInput {
   """
   If unspecified, server will pick an appropriate default.
   """
-  pageSize: Float!
-  """
-  The value returned from the previous call.
-  """
-  pageToken: String!
-  """
-  A filter to be applied to results.
-
-  Currently accepted filters include:
-  - uri:{absolute uri}
-  - resource:{full resource name}
-  """
-  filter: String!
-  """
-  Whether to return only the latest revision for each cache.
-  """
-  onlyLatestRevision: Boolean!
-}
-
-input AnimeshonWebcacheV1Alpha1_ListCachesRequestInput {
-  """
-  If unspecified, server will pick an appropriate default.
-  """
-  pageSize: Float
+  pageSize: Int
   """
   The value returned from the previous call.
   """
@@ -166,41 +117,27 @@ input AnimeshonWebcacheV1Alpha1_ListCachesRequestInput {
   onlyLatestRevision: Boolean
 }
 
-type AnimeshonWebcacheV1Alpha1_ListCachesResponse {
+type ListCachesResponse {
   """
   The list of caches.
   """
-  caches: [AnimeshonWebcacheV1Alpha1_Cache!]!
+  caches: [Cache!]!
   """
   A token to retrieve next page of results.
   """
   nextPageToken: String!
 }
 
-type AnimeshonWebcacheV1Alpha1_GetCacheRequest {
+input GetCacheRequestInput {
   """
   The resource name of the requested cache.
   """
   name: String!
 }
 
-input AnimeshonWebcacheV1Alpha1_GetCacheRequestInput {
-  """
-  The resource name of the requested cache.
-  """
-  name: String
-}
-
-type AnimeshonWebcacheV1Alpha1_DeleteCacheRequest {
+input DeleteCacheRequestInput {
   """
   The name of the cache to delete.
   """
   name: String!
-}
-
-input AnimeshonWebcacheV1Alpha1_DeleteCacheRequestInput {
-  """
-  The name of the cache to delete.
-  """
-  name: String
 }

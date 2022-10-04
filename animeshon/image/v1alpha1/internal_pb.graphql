@@ -4,7 +4,7 @@
 This is a private internal structure used to store metadata information
 about a specific Image. This structure is never exposed to the public.
 """
-type AnimeshonImageV1Alpha1_ImageEntry {
+type ImageEntry {
   """
   The image resource id.
   """
@@ -12,7 +12,7 @@ type AnimeshonImageV1Alpha1_ImageEntry {
   """
   A reference to a parent resource.
   """
-  parent: AnimeshonImageV1Alpha1_ImageEntry_ParentOneof
+  parent: ImageEntry_ParentOneof
   """
   The uri of the image file.
   Example: gs://my-bucket/my-user/my-album/my-image.jpeg
@@ -25,15 +25,15 @@ type AnimeshonImageV1Alpha1_ImageEntry {
   """
   The size of the image in bytes.
   """
-  fileSize: Float!
+  fileSize: Int!
   """
   The width of image in pixels.
   """
-  width: Float!
+  width: Int!
   """
   The height of image in pixels.
   """
-  height: Float!
+  height: Int!
   """
   When the image was created.
   """
@@ -41,14 +41,14 @@ type AnimeshonImageV1Alpha1_ImageEntry {
 }
 
 """
-`AnimeshonImageV1Alpha1_ImageEntry_ParentOneof` represents the `parent` oneof in `animeshon.image.v1alpha1.ImageEntry`.
+`ImageEntry_ParentOneof` represents the `parent` oneof in `animeshon.image.v1alpha1.ImageEntry`.
 """
-union AnimeshonImageV1Alpha1_ImageEntry_ParentOneof = AnimeshonImageV1Alpha1_ImageEntry_ParentOneof_AlbumId
+union ImageEntry_ParentOneof = ImageEntry_ParentOneof_AlbumId
 
 """
-`AnimeshonImageV1Alpha1_ImageEntry_ParentOneof_AlbumId` represents the `album_id` oneof field in `animeshon.image.v1alpha1.ImageEntry`.
+`ImageEntry_ParentOneof_AlbumId` represents the `album_id` oneof field in `animeshon.image.v1alpha1.ImageEntry`.
 """
-type AnimeshonImageV1Alpha1_ImageEntry_ParentOneof_AlbumId {
+type ImageEntry_ParentOneof_AlbumId {
   _typename: String
   """
   The album resource id. Example: `albums/123`.
@@ -60,7 +60,7 @@ type AnimeshonImageV1Alpha1_ImageEntry_ParentOneof_AlbumId {
 This is a private internal structure used to store metadata information
 about a specific Album. This structure is never exposed to the public.
 """
-type AnimeshonImageV1Alpha1_AlbumEntry {
+type AlbumEntry {
   """
   The album resource id.
   """
@@ -68,7 +68,7 @@ type AnimeshonImageV1Alpha1_AlbumEntry {
   """
   A reference to a parent resource.
   """
-  parent: AnimeshonImageV1Alpha1_AlbumEntry_ParentOneof
+  parent: AlbumEntry_ParentOneof
   """
   The album display name.
   """
@@ -109,14 +109,14 @@ type AnimeshonImageV1Alpha1_AlbumEntry {
 }
 
 """
-`AnimeshonImageV1Alpha1_AlbumEntry_ParentOneof` represents the `parent` oneof in `animeshon.image.v1alpha1.AlbumEntry`.
+`AlbumEntry_ParentOneof` represents the `parent` oneof in `animeshon.image.v1alpha1.AlbumEntry`.
 """
-union AnimeshonImageV1Alpha1_AlbumEntry_ParentOneof = AnimeshonImageV1Alpha1_AlbumEntry_ParentOneof_OrganizationId | AnimeshonImageV1Alpha1_AlbumEntry_ParentOneof_UserId
+union AlbumEntry_ParentOneof = AlbumEntry_ParentOneof_OrganizationId | AlbumEntry_ParentOneof_UserId
 
 """
-`AnimeshonImageV1Alpha1_AlbumEntry_ParentOneof_OrganizationId` represents the `organization_id` oneof field in `animeshon.image.v1alpha1.AlbumEntry`.
+`AlbumEntry_ParentOneof_OrganizationId` represents the `organization_id` oneof field in `animeshon.image.v1alpha1.AlbumEntry`.
 """
-type AnimeshonImageV1Alpha1_AlbumEntry_ParentOneof_OrganizationId {
+type AlbumEntry_ParentOneof_OrganizationId {
   _typename: String
   """
   The organization resource id. Example: `organizations/456`.
@@ -125,9 +125,9 @@ type AnimeshonImageV1Alpha1_AlbumEntry_ParentOneof_OrganizationId {
 }
 
 """
-`AnimeshonImageV1Alpha1_AlbumEntry_ParentOneof_UserId` represents the `user_id` oneof field in `animeshon.image.v1alpha1.AlbumEntry`.
+`AlbumEntry_ParentOneof_UserId` represents the `user_id` oneof field in `animeshon.image.v1alpha1.AlbumEntry`.
 """
-type AnimeshonImageV1Alpha1_AlbumEntry_ParentOneof_UserId {
+type AlbumEntry_ParentOneof_UserId {
   _typename: String
   """
   The user resource id. Example: `users/789`.
@@ -135,11 +135,11 @@ type AnimeshonImageV1Alpha1_AlbumEntry_ParentOneof_UserId {
   userId: Float!
 }
 
-type AnimeshonImageV1Alpha1_RouteEntry {
+type RouteEntry {
   """
   A reference to a parent resource.
   """
-  parent: AnimeshonImageV1Alpha1_RouteEntry_ParentOneof
+  parent: RouteEntry_ParentOneof
   """
   The album resource id.
   """
@@ -151,14 +151,14 @@ type AnimeshonImageV1Alpha1_RouteEntry {
 }
 
 """
-`AnimeshonImageV1Alpha1_RouteEntry_ParentOneof` represents the `parent` oneof in `animeshon.image.v1alpha1.RouteEntry`.
+`RouteEntry_ParentOneof` represents the `parent` oneof in `animeshon.image.v1alpha1.RouteEntry`.
 """
-union AnimeshonImageV1Alpha1_RouteEntry_ParentOneof = AnimeshonImageV1Alpha1_RouteEntry_ParentOneof_OrganizationId | AnimeshonImageV1Alpha1_RouteEntry_ParentOneof_UserId
+union RouteEntry_ParentOneof = RouteEntry_ParentOneof_OrganizationId | RouteEntry_ParentOneof_UserId
 
 """
-`AnimeshonImageV1Alpha1_RouteEntry_ParentOneof_OrganizationId` represents the `organization_id` oneof field in `animeshon.image.v1alpha1.RouteEntry`.
+`RouteEntry_ParentOneof_OrganizationId` represents the `organization_id` oneof field in `animeshon.image.v1alpha1.RouteEntry`.
 """
-type AnimeshonImageV1Alpha1_RouteEntry_ParentOneof_OrganizationId {
+type RouteEntry_ParentOneof_OrganizationId {
   _typename: String
   """
   The organization resource id. Example: `organizations/456`.
@@ -167,9 +167,9 @@ type AnimeshonImageV1Alpha1_RouteEntry_ParentOneof_OrganizationId {
 }
 
 """
-`AnimeshonImageV1Alpha1_RouteEntry_ParentOneof_UserId` represents the `user_id` oneof field in `animeshon.image.v1alpha1.RouteEntry`.
+`RouteEntry_ParentOneof_UserId` represents the `user_id` oneof field in `animeshon.image.v1alpha1.RouteEntry`.
 """
-type AnimeshonImageV1Alpha1_RouteEntry_ParentOneof_UserId {
+type RouteEntry_ParentOneof_UserId {
   _typename: String
   """
   The user resource id. Example: `users/789`.
