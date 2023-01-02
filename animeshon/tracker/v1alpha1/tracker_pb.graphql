@@ -12,6 +12,7 @@ type TrackerService_Query {
   TODO: add documentation about supported filters.
   """
   listTrackers(input: ListTrackersRequestInput!): ListTrackersResponse!
+  computeTracker(input: ComputeTrackerRequestInput!): ComputeTrackerResponse!
 }
 
 type TrackerService_Mutation {
@@ -303,6 +304,35 @@ type Audience {
   members: [String!]!
 }
 
+"""
+A progress indicator tree is dynamically generated from all activities
+associated with a specific resource including all of its children resources.
+"""
+type ProgressIndicatorTree {
+  root: ProgressIndicatorTree_Node
+}
+
+type ProgressIndicatorTree_ProgressIndicator {
+  minvalue: Int!
+  maxvalue: Int!
+  value: Int!
+  ratio: Float!
+  threshold: Int!
+}
+
+type ProgressIndicatorTree_Node {
+  indicator: ProgressIndicatorTree_ProgressIndicator
+  nodes: [ProgressIndicatorTree_Node_NodesEntry!]!
+}
+
+"""
+`ProgressIndicatorTree_Node_NodesEntry` represents the `nodes` map in `animeshon.tracker.v1alpha1.ProgressIndicatorTree.Node`.
+"""
+type ProgressIndicatorTree_Node_NodesEntry {
+  key: String!
+  value: ProgressIndicatorTree_Node
+}
+
 input GetTrackerRequestInput {
   """
   The name of the tracker to retrieve.
@@ -388,9 +418,14 @@ input DeleteActivityRequestInput {
   name: String!
 }
 
-"""
-Selecting what provider we want to import from
-"""
+input ComputeTrackerRequestInput {
+  name: String!
+}
+
+type ComputeTrackerResponse {
+  tree: ProgressIndicatorTree
+}
+
 input ImportTrackersRequestInput {
   parent: String!
   provider: Provider
