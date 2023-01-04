@@ -313,8 +313,8 @@ type ProgressIndicatorTree {
 }
 
 type ProgressIndicatorTree_ProgressIndicator {
-  minvalue: Int!
-  maxvalue: Int!
+  minValue: Int!
+  maxValue: Int!
   value: Int!
   ratio: Float!
   threshold: Int!
